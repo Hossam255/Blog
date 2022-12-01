@@ -64,16 +64,17 @@ class PostController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        Post::where('slug', $slug)
+        ->update([
+            'title'=> $request->input('title'),
+            'description'=> $request->input('description'),
+            'slug'=> $slug,
+            'user_id' => auth()->user()->id
+        ]);
+        return redirect('/blog/' . $slug)
+        ->with('message', 'تم التعديل');
     }
 
     /**

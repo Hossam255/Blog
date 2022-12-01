@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="container m-auto text-center pt-15 pb-5">
-    <h1 class="text-6xl font-bold">جميع الموضوعات</h1>
+    <h1 class="text-6xl font-bold"> اضف موضوعا جديدا</h1>
 </div>
 
 <div class="container m-auto pt-15 pb-5">
