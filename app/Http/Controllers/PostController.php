@@ -45,15 +45,10 @@ class PostController extends Controller
         return redirect('/blog');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        return view('blog.show')
+        ->with('post', Post::where('slug', $slug)->first());
     }
 
     /**
@@ -62,9 +57,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        return view('blog.edit')
+        ->with('post', Post::where('slug', $slug)->first());
+
     }
 
     /**
