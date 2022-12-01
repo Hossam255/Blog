@@ -35,7 +35,14 @@ class PostController extends Controller
         $newImageName = uniqid() .'.' . $slug .'.'. $request->image->extension();
         $request->image->move(public_path('images'), $newImageName);
         
-        
+        Post::create([
+            'title'=> $request->input('title'),
+            'description'=> $request->input('description'),
+            'slug'=> $slug,
+            'image_path'=> $newImageName,
+            'user_id' => auth()->user()->id
+        ]);
+        return redirect('/blog');
     }
 
     /**
